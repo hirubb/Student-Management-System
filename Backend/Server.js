@@ -1,46 +1,31 @@
-
-//importing dependencies
-const express = require("express");
+const express = require("express");  //Create variable and assign value
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
+const bodyparser = require("body-parser");
 const cors = require("cors");
+const dotenv = require("dotenv");
 const app = express();
 require("dotenv").config();
 
-//assing a port to in the local host
-const PORT = process.env.PORT || 8070;  //assign 8070 port if it is available : if not assign to an available port
+
+const PORT = process.env.PORT || 8070; //If 8070 not avilable assign another avilalabe port number
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyparser.json());
 
-//import url of the db
-const URL = process.env.MONGODB_URL;
+const URL = process.env.MONGODB_URL; //connect to mongodb
 
 mongoose.connect(URL,{
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-})
-
-
-.then(()=>{
-    console.log("db connected");
-}).catch((err)=>console.log(err)
-);
-
-//create the connnection
-const connection = mongoose.connection;
-connection.once("open",()=>{
-    console.log("mongodb connection successfull");
-    
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+   
 });
 
-//open the app in the assigned port
-app.listen(PORT,() => {
-    console.log(`server is up and running on port : ${PORT}`);
+const connection = mongoose.connection;
+connection.once("open",() => {  //Open the created connection
+    console.log("MongoDb connection success!");
 })
 
-const studentRouter = require("./routes/Students.js"); //Add students.js file
+const studentRouter = require("./routes/students.js"); //Add students.js file
 
 
 

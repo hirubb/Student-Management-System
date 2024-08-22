@@ -8,7 +8,7 @@ const studentSchema = new Schema({
         type : String,
         required:true
     },
-    mobile : {
+    age : {
         type : Number,
         required:true
 
