@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom'; //navigates  between routes using link tag //helps not to refresh pages when navigating 
+
 
 
 function Header(){
@@ -22,12 +24,9 @@ function Header(){
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
-              </a>
-              <a className="nav-link" href="/add">
-                Add Student
-              </a>
+             <Link to="/" className="nav-link"> Home </Link>
+              
+             <Link to="/add" className="nav-link"> Add Student </Link>
               
               <form className="d-flex" role="search" style={{marginLeft: 200}}>
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
